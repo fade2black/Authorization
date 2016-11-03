@@ -1,6 +1,6 @@
 ## Role based authorization module in Rails
 
-#### Introduction
+### Introduction
 In two of my recent projects I used role based authorization together with Devise gem.There are a lot of gems providing elegant solutions, CanCan and Pundit for example. In this article I want to demonstrate how to implement a module that adds authorization logic to a controller class at action level based on user's role.
 
 Before we start with <code>Authorization</code> module, let's briefly state what we want to implement. Suppose we have a controller <code>ProductController</code> having the following actions: <code>index</code>, <code>show</code>, <code>create</code>, <code>update</code>, <code>destroy</code>. We want admin user to be able to perform all actions, while non-admin user should be able to invoke only <code>index</code> and <code>show</code>. In other words, admin has full control while non-admin may view a list of products and view details of a single product. We might to extend our controller class with the module <code>Authorization</code> and then explicitly declare user permissions
@@ -29,7 +29,7 @@ end
 
 The controller class, here, is extended with the module <code>Authorization</code>, then we declare user permissions on actions meaning that admin is able to invoke all methods but non-admin user may invoke only <code>index</code> and <code>show</code> methods. However, these declarations do not trigger the real authorization procedure. We must call a method, <code>authorize</code> for example, where we put authorization logic based on the previous declarations.   
 
-#### Authorization Module
+### Authorization Module
 We start by creating a test file <code>authorization_test.rb</code>:
 ```ruby
 require 'minitest/autorun'
@@ -142,7 +142,7 @@ module Authorization
 end
 ```
 
-#### Usage from a Rails application
+### Usage from a Rails application
 In order to use this module in a Rails application we might put the file in the <code>lib</code> directory and require it from the application controller file:
 ```ruby
 require 'authorization.rb'
@@ -151,7 +151,7 @@ class ApplicationController < ActionController::API
 end
 ```
 
-#### Conclusion
+### Conclusion
 Thus, we have created a simple authorization module which allows us to declare user permissions to control user access to actions within a Rails controller. As a next step we might add to our module a functionality to read permission information from a database.
 
 ## Contributing
