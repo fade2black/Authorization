@@ -154,7 +154,7 @@ end
 #### Conclusion
 Thus, we have created a simple authorization module which allows us to declare user permissions to control user access to actions within a Rails controller. As a next step we might add to our module a functionality to read permission information from a database.
 
-#### Contributing
+## Contributing
 
 1. Fork it.
 2. Create your feature branch (`git checkout -b my-new-feature`)
